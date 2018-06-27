@@ -4,7 +4,7 @@ var page_creator = require('./serverLibs/pageCreator.js');
 var ml           = require('./serverLibs/mylogger.js');
 
 var app = express();
-app.use(express.static(__dirname + "/../static"));
+app.use(express.static(__dirname + "/static"));
 
     
 // =========================== HANDLE REQUESTS ===========================
@@ -22,7 +22,7 @@ app.get('/v1/results.json', function(req, res){
     };
 
     let data = JSON.stringify(student);  
-    fs.writeFileSync(__dirname + '/../static/student-2.json', data);  
+    fs.writeFileSync(__dirname + '/static/student-2.json', data);  
     res.end();
 })
 
