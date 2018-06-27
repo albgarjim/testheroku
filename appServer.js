@@ -29,6 +29,8 @@ app.get('/v1/results.json', function(req, res){
 })
 
 app.get('/', function(req, res) {
+    console.log(process.env.KEY);
+    console.log(process.env.SECRET);
     ml.two('get /', 'Redirecting /home');
     res.redirect("/home");
     res.end();
