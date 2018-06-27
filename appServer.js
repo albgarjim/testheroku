@@ -3,6 +3,7 @@ var server_Info  = require('./serverLibs/serverInfo.js');
 var page_creator = require('./serverLibs/pageCreator.js');
 var ml           = require('./serverLibs/mylogger.js');
 const PORT = process.env.PORT || 8080
+var a = process.env.MY_KEY;
 
 
 var app = express();
@@ -29,8 +30,7 @@ app.get('/v1/results.json', function(req, res){
 })
 
 app.get('/', function(req, res) {
-    console.log(process.env.KEY);
-    console.log(process.env.SECRET);
+    console.log(process.env.MY_KEY);
     ml.two('get /', 'Redirecting /home');
     res.redirect("/home");
     res.end();
