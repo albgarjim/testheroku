@@ -17,7 +17,7 @@
 			<div class="container">
 				<div class="header-content d-flex justify-content-between align-items-center">
 					<div class="logo">
-						<a href="#top" class="smooth"><img src="img/logo.png" alt=""></a>
+						<a href="#top" class="smooth"><img src="img/indexgood.jpeg" alt=""></a>
 					</div>
 					<div class="right-bar d-flex align-items-center">
 						<div class="header-social d-flex align-items-center">
@@ -45,6 +45,69 @@
 							<div class="single-input color-2 mb-10">
 								<input type="text" name="precio_max" placeholder="Precio Máximo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Precio Máximo'" required>
 
+							</div>
+							<div class="color2 mb-10">
+								 <fieldset>
+									<p class="text-uppercase text-white">¿Cómo valoras la seguridad?</p>
+									<label class="text-white">
+										<input type="radio" name="seguridad" value="1"> 1
+									</label>
+									<label class="text-white">
+										<input type="radio" name="seguridad" value="2"> 2
+									</label>
+									<label class="text-white">
+										<input type="radio" name="seguridad" value="3"> 3
+									</label>
+									<label class="text-white">
+										<input type="radio" name="seguridad" value="4"> 4
+									</label>
+									<label class="text-white">
+										<input type="radio" name="seguridad" value="5"> 5
+									</label>
+								</fieldset>
+								<!--input type="text" name="precio_max" placeholder="Precio Máximo" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required-->
+							</div>
+							<div class="color2 mb-10">
+								 <fieldset>
+									<p class="text-uppercase text-white">¿Te gustaría vivir cerca de zonas de ocio?</p>
+									<label class="text-white">
+										<input type="radio" name="ocio" value="1"> 1
+									</label>
+									<label class="text-white">
+										<input type="radio" name="ocio" value="2"> 2
+									</label>
+									<label class="text-white">
+										<input type="radio" name="ocio" value="3"> 3
+									</label>
+									<label class="text-white">
+										<input type="radio" name="ocio" value="4"> 4
+									</label>
+									<label class="text-white">
+										<input type="radio" name="ocio" value="5"> 5
+									</label>
+								</fieldset>
+								<!--input type="text" name="precio_max" placeholder="Precio Máximo" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required-->
+							</div>
+							<div class="color2 mb-10">
+								 <fieldset>
+									<p class="text-uppercase text-white">¿Le das importancia a los valores de contaminación?</p>
+									<label class="text-white">
+										<input type="radio" name="contaminacion" value="1"> 1
+									</label>
+									<label class="text-white">
+										<input type="radio" name="contaminacion" value="2"> 2
+									</label>
+									<label class="text-white">
+										<input type="radio" name="contaminacion" value="3"> 3
+									</label>
+									<label class="text-white">
+										<input type="radio" name="contaminacion" value="4"> 4
+									</label>
+									<label class="text-white">
+										<input type="radio" name="contaminacion" value="5"> 5
+									</label>
+								</fieldset>
+								<!--input type="text" name="precio_max" placeholder="Precio Máximo" onfocus="this.placeholder = ''" onblur="this.placeholder = ''" required-->
 							</div>
 							<button style="margin-top: 20px;" id="mybuton" type="submit" value="enviar">¡Vamos!</a>
 					</div>
@@ -150,13 +213,18 @@ $(document).ready(function() {
 
 
 $("#mybuton").on('click', function (e) {
-	console.log("aaa")
-  var info = { "name":"John", "age":30, "car":null } ;             
+  var llamada = {
+  	precio: $("input[name=precio_max]").val(), 
+  	seguridad: $("input[name=seguridad]:checked").val(), 
+  	ocio: $("input[name=ocio]:checked").val(),
+  	contaminacion: $("input[name=contaminacion]:checked").val()
+
+  };   	          
 
   $.ajax({
       type: "GET",
       url: '/v1/results.json',
-      data: JSON.stringify(info),
+      data: JSON.stringify(llamada),
       contentType: "application/json; charset=utf-8",
       success: function (data) {
           window.location = "/results";
