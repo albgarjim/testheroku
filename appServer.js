@@ -3,6 +3,7 @@ var server_Info  = require('./serverLibs/serverInfo.js');
 var page_creator = require('./serverLibs/pageCreator.js');
 var ml           = require('./serverLibs/mylogger.js');
 var url = require('url')
+var request = require('request')
 const PORT = process.env.PORT || 8080
 const clId = process.env.clientId || 123;
 const clSe = process.env.clientSecret || 234;
@@ -12,7 +13,7 @@ var total = clId + ':' + clSe;
 // var authorizationBasic = $.base64.btoa(clientId + ':' + clientSecret);
 var authorizationBasic = new Buffer(total).toString('base64');
 
-var request = require('request')
+
 
 var app = express();
 app.use(express.static(__dirname + "/static"));
